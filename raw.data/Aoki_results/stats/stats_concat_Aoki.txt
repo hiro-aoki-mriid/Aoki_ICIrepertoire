@@ -1,0 +1,17 @@
+Aoki
+total reads	483263600
+trimmed reads	470440951
+mapped reads	466767686
+mapping rate against reference	99.2191868092708
+mapping rate against reference & CellBC	92.9152205707745
+final assigned reads	433698225
+inflection threshold	4501
+Survived cells	14881
+over10000read cells	13812
+total reads over inflection threshold	352152779
+percent of total reads over inflection threshold	81.1976528149268
+Median reads over inflection threshold	20681
+Mean reads over inflection threshold	23664.5910221087
+Median symbols over inflection threshold	121
+Mean symbols over inflection threshold	123.533163093878
+total genes detected	8910

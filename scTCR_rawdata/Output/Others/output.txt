@@ -1,0 +1,1 @@
+TRA_CB 12396 12283 10649 85.9% exp count.CB count.total count.paired paired.ratio

@@ -14579,7 +14579,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="%E8%A7%A3%E6%9E%90%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">&#35299;&#26512;&#12395;&#24517;&#35201;&#12394;&#12521;&#12452;&#12502;&#12521;&#12522;&#12398;&#35501;&#12415;&#36796;&#12415;<a class="anchor-link" href="#%E8%A7%A3%E6%9E%90%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">&#182;</a></h3>
+<h3 id="Load-libraries-and-functions">Load libraries and functions<a class="anchor-link" href="#Load-libraries-and-functions">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -14609,11 +14609,6 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">viridis</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">VGAM</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">msigdbr</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">org.Mm.eg.db</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">org.Hs.eg.db</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">enrichplot</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">clusterProfiler</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">forcats</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">grDevices</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">graphics</span><span class="p">)</span>
@@ -16865,6 +16860,8 @@ Warning message in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, 
 <span class="nf">write.csv</span><span class="p">(</span><span class="n">meta.data</span><span class="p">,</span> <span class="s">&quot;meta.data.csv&quot;</span><span class="p">,</span> <span class="n">row.names</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
 
 <span class="c1">#Perform integration of scTCR result</span>
+<span class="c1">#We used the pipeline produced by ImmunoGeneTeqs, Inc. for assembling TCR clone from single-cell TCRseq reads</span>
+<span class="c1">#and integrating TCR sequence information to Seurat object. (http://immunogeneteqs.com/index.html)</span>
 </pre></div>
 
      </div>
@@ -17084,10 +17081,6 @@ Using Freq as value column: use value.var to override.
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">### Detect dLN-Tumor OL clones</span>
 
-<span class="c1">#scTCR, &quot;clone_within_cluster&quot;をクエリーに使用</span>
-<span class="c1">#WGCNA後のcsvファイルから、Bulk中での各タイムポイントにおける頻度, WGCNA classを抜き出す</span>
-<span class="c1">#Input: &quot;csv_WGCNA/NaraCOVID_CD*_***_TCR.wgcna.csv&quot;</span>
-
 <span class="c1">###Input layer</span>
 <span class="c1">#Specify query files: frequency and cluster distribution table of scTCR clones</span>
 <span class="n">dir.query</span> <span class="o">&lt;-</span> <span class="s">&quot;scTCR_analysis&quot;</span>
@@ -17098,7 +17091,7 @@ Using Freq as value column: use value.var to override.
 <span class="n">ID.input</span> <span class="o">&lt;-</span> <span class="s">&quot;BDscTCR_dLN&quot;</span> 
 
 <span class="c1">#Specify the condition for detecting overlappping clones</span>
-<span class="n">extract</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;cdr3nt&quot;</span><span class="p">,</span> <span class="s">&quot;v&quot;</span><span class="p">,</span> <span class="s">&quot;j&quot;</span><span class="p">)</span> <span class="c1">#クローンの分類</span>
+<span class="n">extract</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;cdr3nt&quot;</span><span class="p">,</span> <span class="s">&quot;v&quot;</span><span class="p">,</span> <span class="s">&quot;j&quot;</span><span class="p">)</span>
 
 <span class="c1">#Output directory</span>
 <span class="n">dir.output</span> <span class="o">&lt;-</span> <span class="s">&quot;scTCR_analysis&quot;</span>
@@ -17185,7 +17178,7 @@ Using Freq as value column: use value.var to override.
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="OL-status,-Gene-score%E3%81%AE%E7%B5%B1%E5%90%88">OL status, Gene score&#12398;&#32113;&#21512;<a class="anchor-link" href="#OL-status,-Gene-score%E3%81%AE%E7%B5%B1%E5%90%88">&#182;</a></h3>
+<h3 id="Integrate-OL-status-and-Gene-score-into-seurat-object">Integrate OL status and Gene score into seurat object<a class="anchor-link" href="#Integrate-OL-status-and-Gene-score-into-seurat-object">&#182;</a></h3>
 </div>
 </div>
 </div>

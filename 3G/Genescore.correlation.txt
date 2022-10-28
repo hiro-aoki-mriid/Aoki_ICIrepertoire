@@ -1,2 +1,0 @@
-temp_freq Tumor.Prog1 -0.395608	 0.395608	 0.000337	 tumor repertoire rvalue r_abs pvalue
-temp_freq Tumor.Term1 0.418239	 0.418239	 0.000139	 tumor repertoire rvalue r_abs pvalue

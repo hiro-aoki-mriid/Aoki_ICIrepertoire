@@ -2,8 +2,8 @@
 
 Codes for reproducing results of ICI repertoire paper (Aoki et al., 2022).
 
-Code for processing data is "220210_ICIrepertoire_preprocess.ipynb."
-Code for plotting figure is "220210_ICIrepertoire_plotting.ipynb."
+Code for processing data is "221202_ICIrepertoire_preprocess_Fig3.ipynb."
+Code for plotting figure is "221203_ICIrepertoire_plotting_Fig3.ipynb."
 
 Raw data for single-cell RNAseq is stored in the directory "raw.data."
 Raw data for single-cell TCRseq is stored in the directory "scTCR_rawdata."
@@ -20,6 +20,6 @@ docker pull haokimriid/singlecell
 Launch Jupyter from the Docker image and work on Jupyter. 
 For, Windows10 Pro, run the following command.
 ```
-docker run --rm -p 8888:8888 -v /mnt/your-working -directory/:/opt/work daisuke1121/immunogeneteqs jupyter notebook --allow-root
+docker run --rm -p 8888:8888 -v /mnt/your-working -directory/:/opt/work haokimriid/singlecell jupyter notebook --allow-root
 ```
 Then, Copy the http://127.0.0.1:8888/?token=~ part (URL) and launch it in your browser. 
